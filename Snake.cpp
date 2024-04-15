@@ -4,17 +4,41 @@ void Snake::DeleteBackNode() {
 	m_Position[1].pop_back();
 	--m_Length;
 }
-Snake::Snake(int orientation) {
+Snake::Snake(int Orientation, int Length, int beginx, int beginy) {
 	m_Length = 0;
 	list<int>x;
 	list<int>y;
+	if (Orientation == UP) {
+		assert(beginy - Length >= 0);
+		for (int i = Length - 1; i >= 0 ; --i) {
+			x.push_back(beginx);
+			y.push_back(beginy - i);
+		}
+	}
+	else if (Orientation == DOWN) {
+		assert(beginy + Length < ROW);
+		for (int i = Length - 1; i >= 0; --i) {
+			x.push_back(beginx);
+			y.push_back(beginy + i);
+		}
+	}
+	else if (Orientation == RIGHT) {
+		assert(beginx + Length < COL);
+		for (int i = Length-1; i >= 0; --i) {
+			x.push_back(beginx + i);
+			y.push_back(beginy);
+		}
+	}
+	else if (Orientation == LEFT) {
+		assert(beginx - Length >= 0);
+		for (int i = Length - 1; i >= 0; --i) {
+			x.push_back(beginx - i);
+			y.push_back(beginy);
+		}
+	}
 	m_Position.push_back(x);
 	m_Position.push_back(y);
-
-
-
-
-	m_Orientation = orientation;
+	m_Orientation = Orientation;
 }
 int Snake::getLenth() {
 	return m_Length;
@@ -22,7 +46,7 @@ int Snake::getLenth() {
 void Snake::PrintPositon() {
 	list<int>::const_iterator itx = m_Position[0].begin();
 	list<int>::const_iterator ity = m_Position[1].begin();
-	for (;itx != m_Position[0].end() && ity != m_Position[1].end(); itx++, ity++)//遍历坐标	打印坐标
+	for (;itx != m_Position[0].end() && ity != m_Position[1].end(); itx++, ity++)//閬嶅巻鍧愭爣	鎵撳嵃鍧愭爣
 		cout << *itx << "," << *ity << endl;
 }
 void Snake::Move() {

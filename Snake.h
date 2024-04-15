@@ -3,15 +3,15 @@
 using namespace std;
 class Snake : public Object{
 public:
-	void ShowSnakeInMap();//ÒÔµØÍ¼µÄĞÎÊ½´òÓ¡³öÉßµÄÎ»ÖÃ
-	int getLenth();//»ñÈ¡ÉßµÄ³¤¶È
-	void PrintPositon();//ÒÔ×ø±êĞÎÊ½´òÓ¡ÉßµÄÎ»ÖÃ
-	void Move();//ÒÆ¶¯Ò»¸öµ¥Î»
-	void ChangeOrientation(int orientation);//¸Ä±äÉßÇ°½ø³¯Ïò
-	bool SnakeOccupied(int x, int y);//ÊäÈëxy×ø±ê£¬ÅĞ¶Ï¸Ã×ø±êÊÇ·ñ±»ÉßËùÕ¼ÓÃ£¬ÊÇÔò·µ»Øtrue£¬·ñÔò·µ»Øfalse
+	void ShowSnakeInMap();//ä»¥åœ°å›¾çš„å½¢å¼æ‰“å°å‡ºè›‡çš„ä½ç½®
+	int getLenth();//è·å–è›‡çš„é•¿åº¦
+	void PrintPositon();//ä»¥åæ ‡å½¢å¼æ‰“å°è›‡çš„ä½ç½®
+	void Move();//ç§»åŠ¨ä¸€ä¸ªå•ä½
+	void ChangeOrientation(int orientation);//æ”¹å˜è›‡å‰è¿›æœå‘
+	bool SnakeOccupied(int x, int y);//è¾“å…¥xyåæ ‡ï¼Œåˆ¤æ–­è¯¥åæ ‡æ˜¯å¦è¢«è›‡æ‰€å ç”¨ï¼Œæ˜¯åˆ™è¿”å›trueï¼Œå¦åˆ™è¿”å›false
 	pair<int, int> getPositon(int x);
-	Snake(int orientation);
+	Snake(int Orientation, int Length, int beginx, int beginy);
 private:
-	void DeleteBackNode();//É¾³ıÉßµÄ×îºóÒ»¸ö½Úµã
+	void DeleteBackNode();//åˆ é™¤è›‡çš„æœ€åä¸€ä¸ªèŠ‚ç‚¹
 	int m_Orientation;
 };

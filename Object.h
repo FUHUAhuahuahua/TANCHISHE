@@ -4,13 +4,13 @@
 #include<vector>
 #include<assert.h>
 #include<list>
-#define ROW 30//ĞĞ
-#define COL 80//ÁĞ
+#define ROW 30//è¡Œ
+#define COL 80//åˆ—
 enum { UP, DOWN, LEFT, RIGHT };
 using namespace std;
 class Object {
 public:
-	void AddNode(int x, int y);//Ìí¼ÓÎïÆ·µÄÏñËØµã×ø±ê£¨±£Ö¤Á¬Ğø£©
+	void AddNode(int x, int y);//æ·»åŠ ç‰©å“çš„åƒç´ ç‚¹åæ ‡ï¼ˆä¿è¯è¿ç»­ï¼‰
 protected:
 	vector<list<int>>m_Position;
 	int m_Length;

@@ -1,8 +1,8 @@
 #pragma once
-#include<iostream>
-#include<vector>
-using namespace std;
-
-class Wall {
-
+#include"Object.h"
+class Wall : public Object{
+public:
+	Wall(int Color, int Orientation, int Length, int x, int y);
+private:
+	int m_Color;
 };

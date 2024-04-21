@@ -19,3 +19,11 @@ Food::Food(int size,int color,int posx,int posy) {
 	m_Position.push_back(y);
 	m_Color = color;
 }
+
+int Food::getColor() {
+	return this->m_Color;
+}
+
+int Food::getSize() {
+	return this->m_Size;
+}

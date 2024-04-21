@@ -35,3 +35,10 @@ Wall::Wall(int Color, int Orientation, int Length, int beginx, int beginy) {
 	m_Position.push_back(y);
 	m_Length = Length;
 }
+
+int Wall::getColor() {
+	return this->m_Color;
+}
+
+
+

@@ -11,6 +11,8 @@ using namespace std;
 class Object {
 public:
 	void AddNode(int x, int y);//添加物品的像素点坐标（保证连续）
+	pair<int, int> getPositon(int x);
+	int getLength();
 protected:
 	vector<list<int>>m_Position;
 	int m_Length;

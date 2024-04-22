@@ -135,7 +135,7 @@ void Snake::DrawSnakeBody(int x,int y) {
 
 void Snake::DrawSnake() {
 	setfillcolor(MIDDLEPURPLE);
-	for (int i = 0; i < m_Length; i++) {
+	for (int i = 0; i < m_Length; i++) {//遍历蛇身花圆
 		pair<int, int>p;
 		p = this->getPositon(i);
 		DrawSnakeBody(p.first, p.second);
@@ -143,4 +143,15 @@ void Snake::DrawSnake() {
 			setfillcolor(LIGHTPURPLE);
 		}
 	}
+}
+
+bool Snake::BeHit(Snake& s) {
+	pair<int, int> sp = s.getPositon(0);
+	for (int i = 1; i < this->m_Length; ++i) {
+		pair<int, int> wp = this->getPositon(i);
+		if (wp == sp) {
+			return true;
+		}
+	}
+	return false;
 }

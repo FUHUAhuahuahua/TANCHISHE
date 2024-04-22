@@ -1,8 +1,8 @@
 #include"Wall.h"
 Wall::Wall(int Color, int Orientation, int Length, int beginx, int beginy) {
 	m_Color = Color;
-	list<int>x;
-	list<int>y;
+	deque<int>x;
+	deque<int>y;
 	if (Orientation == UP) {
 		assert(beginy - Length >= 0);
 		for (int i = 0; i < Length; ++i) {
@@ -38,6 +38,17 @@ Wall::Wall(int Color, int Orientation, int Length, int beginx, int beginy) {
 
 int Wall::getColor() {
 	return this->m_Color;
+}
+
+bool Wall::BeHit(Snake& s) {
+	pair<int, int> sp = s.getPositon(0);
+	for (int i = 0; i < this->m_Length; ++i) {
+		pair<int, int> wp = this->getPositon(i);
+		if (wp == sp) {
+			return true;
+		}
+	}
+	return false;
 }
 
 

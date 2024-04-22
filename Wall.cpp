@@ -51,5 +51,15 @@ bool Wall::BeHit(Snake& s) {
 	return false;
 }
 
+void Wall::DrawWallBody(int x,int y) {
+	solidrectangle(x * CELL_SIZE + 1, y * CELL_SIZE + (CELL_SIZE)-1, x * CELL_SIZE + CELL_SIZE - 1, y * CELL_SIZE + 1); // 绘制墙体
+}
 
-
+void Wall::DrawWall() {
+	setfillcolor(this->m_Color);//墙颜色
+	for (int i = 0; i < this->m_Length; ++i) {
+		pair<int, int>p;
+		p = this->getPositon(i);
+		DrawWallBody(p.first, p.second);
+	}
+}

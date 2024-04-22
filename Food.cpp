@@ -27,3 +27,14 @@ int Food::getColor() {
 int Food::getSize() {
 	return this->m_Size;
 }
+
+bool Food::BeHit(Snake& s) {
+	pair<int, int> sp = s.getPositon(0);
+	for (int i = 0; i < this->m_Length; ++i) {
+		pair<int, int> wp = this->getPositon(i);
+		if (wp == sp) {
+			return true;
+		}
+	}
+	return false;
+}

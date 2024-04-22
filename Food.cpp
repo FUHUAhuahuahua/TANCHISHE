@@ -1,7 +1,7 @@
 #include"Food.h"
 Food::Food(int size,int color,int posx,int posy) {
-	list<int>x;
-	list<int>y;
+	deque<int>x;
+	deque<int>y;
 	x.push_back(posx);
 	y.push_back(posy);
 	switch (size) {

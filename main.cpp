@@ -1,30 +1,71 @@
-/*#include"Snake.h"
+#include"Snake.h"
+#include"Wall.h"
+#include"Food.h"
+#include<conio.h>
+#include<graphics.h>
 #include <windows.h>
+using namespace std;
 
 void clearConsole() {
-	system("cls"); // »òÕßÊ¹ÓÃsystem("clear"); ÔÚUnix/LinuxÏµÍ³ÖĞ
+	system("cls"); // æˆ–è€…ä½¿ç”¨system("clear"); åœ¨Unix/Linuxç³»ç»Ÿä¸­
+}
+
+void DrawBody(int x,int y) {
+	fillcircle(x * CELL_SIZE + CELL_SIZE / 2, y * CELL_SIZE + CELL_SIZE / 2, Snake_Body_Size);
 }
 
 int main() {
-	Snake s(RIGHT);
-	s.AddNode(9, 11);//Î²	¶¨ÒåÁ´±íÍ·½ÚµãÎªÉßÍ·
-	s.AddNode(9, 10);
-	s.AddNode(10, 10);
-	s.AddNode(11, 10);
-	s.AddNode(12, 10);
-	s.AddNode(13, 10);//Í·	Á´±íÎ²½ÚµãÎªÉßÎ²
-	int i = 0;
-	while (1) {
-		cout <<"Lenth: " << s.getLenth() << endl;
-		s.PrintPositon();
-		s.ShowSnakeInMap();
-		Sleep(500);
-		clearConsole();
-		s.Move();
-		++i;
-		if (i >= 10) {
-			s.ChangeOrientation(DOWN);//²âÊÔµ÷Õû·½Ïò¹¦ÄÜ
+	Snake snake(DOWN, 15, 20, 10);
+	Wall wall(RED, DOWN, 20, 0, 0);
+	initgraph(800,600);//çª—å£å¤§å°
+	setbkcolor(WHITE);//æ¸¸æˆèƒŒæ™¯è‰²
+
+	while (!wall.BeHit(snake) && !snake.BeHit(snake)) {
+		cout << snake.getPositon(1).first << ", " << snake.getPositon(1).second << endl;
+		//snake.ShowSnakeInMap();
+		Sleep(200);
+		cleardevice();
+		if (_kbhit()) {
+			switch (_getch()) {
+			case 'a':
+				snake.ChangeOrientation(LEFT);
+				break;
+			case 's':
+				snake.ChangeOrientation(DOWN);
+				break;
+			case 'd':
+				snake.ChangeOrientation(RIGHT);
+				break;
+			case 'w':
+				snake.ChangeOrientation(UP);
+				break;
+			}
 		}
+
+
+		//snake.Move();
+		cleardevice();//æ¸…ç†çª—å£
+		snake.Move();
+		snake.DrawSnake();
+		//æ­¤å¤„è¦å¾—åˆ°itxï¼Œityï¼Œpositionï¼›
+
+
+
+		setfillcolor(wall.getColor());//è›‡èº«é¢œè‰²ï¼ˆç›®å‰ä¸ºç»¿è‰²ä¸ºï¼‰
+		for (int i = 0; i < wall.getLength(); ++i) {
+			pair<int, int>p;
+			p = wall.getPositon(i);
+			DrawBody(p.first, p.second);
+		}
+		//setfillcolor(WHITE);//è®¾ç½®è›‡çœ¼é¢œè‰²
+		//int EYE_SIZE = Snake_Body_Size / 5;
+		//fillcircle()//çœ¼ç›ç›¸å¯¹äºå¤´çš„ä½ç½®ä»¥åŠå¤§å°;
+
+
+
 	}
-	return 0;
-}*/
+	cout << "æ¸¸æˆç»“æŸ" << endl;
+	closegraph();
+
+}
+

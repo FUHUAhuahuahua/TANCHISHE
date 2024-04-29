@@ -1,23 +1,24 @@
 #include"Food.h"
-Food::Food(int size,int color,int posx,int posy) {
+Food::Food(int size, int color, int posx, int posy) {
 	deque<int>x;
 	deque<int>y;
 	x.push_back(posx);
 	y.push_back(posy);
 	switch (size) {
 	case MIDDLE:
-		m_Size = 7;
+		m_Size = MIDDLE;
 		break;
 	case BIG:
-		m_Size = 10;
+		m_Size = BIG;
 		break;
 	default:
-		m_Size = 5;
+		m_Size = SMALL;
 		break;
 	}
 	m_Position.push_back(x);
 	m_Position.push_back(y);
 	m_Color = color;
+	m_Length = 1;
 }
 
 int Food::getColor() {
@@ -37,4 +38,24 @@ bool Food::BeHit(Snake& s) {
 		}
 	}
 	return false;
+}
+void Food::DrawFood(int it_size) {
+	int x, y;
+	pair<int,int> p = this->getPositon(0);
+	x = p.first;
+	y = p.second;
+	setfillcolor(this->m_Color);
+	switch (this->m_Size) {
+	case SMALL:
+		solidcircle(x * CELL_SIZE + (CELL_SIZE / 2), y * CELL_SIZE + (CELL_SIZE / 2), it_size);
+		break;
+	case MIDDLE:
+		solidcircle(x * CELL_SIZE + (CELL_SIZE / 2), y * CELL_SIZE + (CELL_SIZE / 2), it_size);
+		break;
+	case BIG:
+		solidcircle(x * CELL_SIZE + (CELL_SIZE / 2), y * CELL_SIZE + (CELL_SIZE / 2), it_size);
+		break;
+	default:
+		break;
+	}
 }
